@@ -7,10 +7,13 @@ SHELL := /bin/bash
 deploy:
 	git add .
 	git commit -m "update"
-	git push origin master
+	git push origin gh-pages
 	git log
 
-#显示当前分支名
+#显示分支
+br:
+	git branch -a
+	
 show:
 	git remote show
 
@@ -21,5 +24,5 @@ showurl:
 
 #拷贝现有的库
 cloneweb:
-	git clone https://github.com/cuixiaofei/web.git
+	git clone https://github.com/cuixiaofei/mydotfiles.git
 
