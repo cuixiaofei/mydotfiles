@@ -7,7 +7,7 @@ SHELL := /bin/bash
 deploy:
 	git add .
 	git commit -m "update"
-	git push master
+	git push origin master
 	git log
 
 #显示分支
