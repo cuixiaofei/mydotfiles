@@ -3,42 +3,42 @@
 "       http://amix.dk/vim/vimrc.html
 " You can find the latest version on:
 "       http://github.com/easwy/share/tree/master/vim/vimrc/
-" You can find the latest version by cuixiaofei on:
-"       https://github.com/cuixiaofei/myfiles/vimrc
-"
 " Maintainer:  Easwy Yang
 " Homepage:    http://easwy.com/
 " Version Change: Mon Oct 25 16:04:31 CST 2010
 " Version:     0.2
 "
+"
 " SubEditer:   Xiaofei Cui
-" MyChange:    18.11.20
-" MyVersion:   0.2
+" Homepage:    http://xiaophy.com/
+" MyChange:    19.11.13
+" MyVersion:   0.3
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 
 
 
 """""""""""""""""""Release readme""""""""""""""""""""""""""""""
-"0.2
+"0.3
 "完成了基本的命令并且可以自己添加和修改
 "有补全的快捷命令，类似mathematica的括号补全
 "还支持了Vundle包管理器，重新进行了vim编译，支持snippets
 "另外还有OpenResearch的文件头可以自动写入markdown
 "修改部分冲突function为func!
-"有待完成的:
-"重新整理所有功能并完成上传
-"分成不同的模块加载有几个子文件
-"选择版权，完善更新信息的约定
 "添加readme的注释头
 "作为OR的组成部分
-"学习autoload也就是vimscript进阶基本学完了
-"cout输出格式快捷命令
+"cout输出格式快捷命令,好像没啥用
+"整理了解了一些功能
+"有待完成的:
+"分成不同的模块加载有几个子文件
+"学习autoload
+"vimscript进阶
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-
+"""""""""""""""""""Quick Jumptofile""""""""""""""""""""""""""""
+nmap <silent> <leader>pp :call SwitchToBuf("~/paper/dissertation/硕士毕业论文/硕士论文初稿/nkthesis.bib")<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -54,9 +54,6 @@ set nocompatible
 map <F6> <Esc>:setlocal spell spelllang=en_gb<CR>
 map <F7> <Esc>:setlocal nospell<CR>
 
-
-" 设置粘贴功能
-set nopaste
 
 
 " Platform
@@ -131,7 +128,6 @@ set autoread
 let mapleader = ","
 let g:mapleader = ","
 
-"cxf
 "Fast normal write quit
 "Fast saving and Fast quiting
 nmap <silent> <leader>ww :w<cr>
@@ -142,10 +138,6 @@ nmap <silent> <leader>qq :q<cr>
 "nmap <silent> <leader>wf :w!<cr>
 "nmap <silent> <leader>qf :q!<cr>
 
-"Fast remove highlight search
-nmap <silent> <leader><cr> :noh<cr>
-"Fast redraw
-nmap <silent> <leader>rr :redraw!<cr>
 
 " For Thinkpad
 "imap <F1> <ESC>
@@ -357,27 +349,27 @@ set noerrorbells
 set novb t_vb=
 
 "show matching bracets
-"set showmatch
-
+set showmatch
 "How many tenths of a second to blink
-"set mat=2
+set mat=2
 
-  """"""""""""""""""""""""""""""
-  " Statusline
-  """"""""""""""""""""""""""""""
-  "Always hide the statusline
-  set laststatus=2
-  nmap <leader>s :set laststatus=0<cr>
-  nmap <leader>S :set laststatus=2<cr>
 
-  function! CurDir()
-     let curdir = substitute(getcwd(), '/home/cuixf/', "~/", "g")
-     return curdir
-  endfunction
 
-  "Format the statusline
-  "set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
+""""""""""""""""""""""""""""""
+" Statusline
+""""""""""""""""""""""""""""""
+"Always hide the statusline
+set laststatus=2
+nmap <leader>s :set laststatus=0<cr>
+nmap <leader>S :set laststatus=2<cr>
 
+function! CurDir()
+   let curdir = substitute(getcwd(), '/home/cuixf/', "~/", "g")
+   return curdir
+endfunction
+
+"Format the statusline
+set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
 
 
 """"""""""""""""""""""""""""""
@@ -403,80 +395,57 @@ vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
 
 
+map <leader>cxf /cxf<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Moving around and tabs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Map space to / and c-space to ?
-"map <space> /
-"map <c-space> ?
 
-"Smart way to move btw. windows
-"nmap <C-J> <C-W>j
-"nmap <C-K> <C-W>k
-"nmap <C-H> <C-W>h
-"nmap <C-L> <C-W>l
-
-"Buffer比较高级还不会用
-"Actually, the tab does not switch buffers, but my arrows
-"Bclose function can be found in "Buffer related" section
-"map <leader>bd :Bclose<cr>
-"map <down> <leader>bd
-"map <right> :bn<cr>
-"map <left> :bp<cr>
-
-"Use the arrows to something usefull
-"map <down>
-"map <up>
-
-"cxf
-"Tab configuration
+"Fast remove highlight search
+nmap <silent> <leader><leader> :noh<cr>
+"Fast redraw
+nmap <silent> <leader><cr> :set hls<cr>
 
 map <leader>tt :tabnew<space>
+map <leader>te :tabedit
+map <leader>vs :vsplit<space>
+map <leader>df :diffthis
+map <leader>n :set nonumber<cr>
+map <leader>N :set number<cr>
+
+imap <C-l> <right>
+imap <C-h> <left>
+imap <C-K> <up>
+imap <C-j> <down>
+
+imap <C-z> <Esc>z.i
+imap <C-O> <Esc>o
+
 nmap <left> :tabp<cr><cr>
 nmap <right> :tabn<cr><cr>
 nmap <down> :next<cr><cr>
 nmap <up> :previous<cr><cr>
 
-map <leader>vs :vsplit<space>
-map <leader>df :diffthis
-map <leader>n :set nonumber<cr>
-map <leader>N :set number<cr>
-"希望实现的功能有当前行，所有该字符修改为输入值
-
-
-map <leader>cxf /cxf<cr>
-map <leader><leader> /qfphzi<cr>
-
-imap <C-L> <right>
-imap <C-H> <left>
-imap <C-J> <down>
-imap <C-K> <up>
-imap <C-O> <Esc>o
-
-"==================================Latex============================
-map <leader>lt :tabnew ~/.vim/snippets/latextemp.tex<cr>
-imap <C-U> ^{
-imap <C-D> _{
-
-"imap  <up>
-"imap <Esc> 
-"map <Esc> <Esc><Esc>
-"map <leader>te :tabedit
-"map <leader>c :tabclose<cr>
-"map <leader>tm :tabmove
-
-try
-  set switchbuf=useopen
-  set stal=1
-catch
-endtry
-
-"Moving fast to front, back and 2 sides ;)
-"cxf
-"imap <M-$> <esc>$a
-"imap <M-0> <esc>Oi
 "Switch to current dir
 map <silent> <leader>cd :cd %:p:h<cr>
+
+
+"""""""""""""""设置粘贴功能"""""""""""""""""""""""""""""""""""
+set nopaste
+"Paste toggle - when pasting something in, don't indent.
+set pastetoggle=<F3>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""latex"""""""""""""""""""""""""""""""""""
+map <leader>lt :tabnew ~/.vim/snippets/latextemp.tex<cr>
+imap <C-u> ^{
+imap <C-d> _{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""cpppp"""""""""""""""""""""""""""""""""""
+nmap <leader>co icout << "" << v <<endl;<Esc><S-f>"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Parenthesis/bracket expanding
@@ -508,7 +477,6 @@ map <silent> <leader>cd :cd %:p:h<cr>
 "My information
 "iab xdates <c-r>=strftime("%b %d, %Y")<cr>
 "iab xdate <c-r>=strftime("%a %b %d %H:%M:%S %Z %Y")<cr>
-"iab xname Easwy Yang
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -542,12 +510,18 @@ cnoremap <C-E>    <End>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Buffer realted
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Buffer缓存
+"Actually, the tab does not switch buffers, but my arrows
+"Bclose function can be found in "Buffer related" section
+"map <leader>bd :Bclose<cr>
+
 "Open a dummy buffer for paste
-map <leader>es :tabnew<cr>:setl buftype=nofile<cr>
+map <leader>bf :tabnew<cr>:setl buftype=nofile<cr>
 if MySys() == "linux"
-map <leader>ec :tabnew ~/tmp/scratch.txt<cr>
+map <leader>bj :tabnew ~/tmp/scratch.txt<cr>
 else
-map <leader>ec :tabnew $TEMP/scratch.txt<cr>
+map <leader>bj :tabnew $TEMP/scratch.txt<cr>
 endif
 
 "Restore cursor to file position in previous editing session
@@ -597,9 +571,8 @@ set sessionoptions+=sesdir
 "Enable folding, I find it very useful
 "set fen
 "set fdl=0
-nmap <silent> <leader>zo zO
-vmap <silent> <leader>zo zO
-
+nmap <silent> <leader>zz zO
+nmap <silent> <leader>cc zc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text options
@@ -618,23 +591,23 @@ au FileType txt setl lbr
 au FileType txt setl tw=78
 
 set smarttab
-"set lbr
-"set tw=78
+set lbr
+set tw=78
 
-   """"""""""""""""""""""""""""""
-   " Indent
-   """"""""""""""""""""""""""""""
-   "Auto indent
-   set ai
+""""""""""""""""""""""""""""""
+" Indent
+""""""""""""""""""""""""""""""
+"Auto indent
+set ai
 
-   "Smart indet
-   set si
+"Smart indet
+set si
 
-   "C-style indeting
-   set cindent
+"C-style indeting
+set cindent
 
-   "Wrap lines
-   set wrap
+"Wrap lines
+set wrap
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -654,8 +627,9 @@ set completeopt=menu
 set complete-=u
 set complete-=i
 
-" mapping
-" 好几种补全需要搞清楚
+" imapping
+" 下面好几种补全，只使用了一种
+inoremap <C-F>             <C-X><C-F>
 "inoremap <expr> <CR>       pumvisible()?"\<C-Y>":"\<CR>"
 "inoremap <expr> <C-J>      pumvisible()?"\<PageDown>\<C-N>\<C-P>":"\<C-X><C-O>"
 "inoremap <expr> <C-K>      pumvisible()?"\<PageUp>\<C-P>\<C-N>":"\<C-K>"
@@ -663,8 +637,6 @@ set complete-=i
 "inoremap <C-]>             <C-X><C-]>
 "inoremap <C-D>             <C-X><C-D>
 "inoremap <C-U>             <C-X><C-L>
-inoremap <C-F>             <C-X><C-F>
-
 
 
 " Enable syntax
@@ -709,6 +681,7 @@ au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
 "nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 "nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 "
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -718,11 +691,12 @@ au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
    let g:SuperTabPluginLoaded=1 " Avoid load SuperTab Plugin
    let g:SuperTabDefaultCompletionType='context'
    let g:SuperTabContextDefaultCompletionType='<c-p>'
-   "let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-   "let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-   "let g:SuperTabContextDiscoverDiscovery =
-   "      \ ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+   ""let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+   ""let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+   ""let g:SuperTabContextDiscoverDiscovery =
+   ""      \ ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 
+   
    """"""""""""""""""""""""""""""
    " yank ring setting
    """"""""""""""""""""""""""""""
@@ -813,6 +787,13 @@ au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !ch
    nmap <silent> <leader>lk :LUTags<cr>
    nmap <silent> <leader>ll :LUBufs<cr>
    nmap <silent> <leader>lw :LUWalk<cr>
+
+
+   try
+     set switchbuf=useopen
+     set stal=1
+   catch
+   endtry
 
    " lookup file with ignore case
    function! LookupFile_IgnoreCaseFunc(pattern)
@@ -966,8 +947,6 @@ set diffopt+=vertical
 "Remove the Windows ^M
 noremap <Leader>dm mzHmx:%s/<C-V><cr>//ge<cr>'xzt'z:delm x z<cr>
 
-"Paste toggle - when pasting something in, don't indent.
-set pastetoggle=<F3>
 
 "Remove indenting on empty lines
 "map <F2> :%s/\s*$//g<cr>:noh<cr>''
@@ -1101,15 +1080,12 @@ endfunc
 
 func! Setcomment_readmehead()
     call setline(1,"---------------------------------------------------")
-    call append(line("."),   "layout: readme")
-    call append(line(".")+1, "title: ")
-    call append(line(".")+2, "time: ".strftime("%Y年%m月%d日 星期%a"))
-    call append(line(".")+3, "update: ".strftime("%Y年%m月%d日 星期%a"))
-    call append(line(".")+4, "package: ")
-    call setline(7,"---------------------------------------------------")
-    call append(line(".")+6, "")
-    call append(line(".")+7, "")
-
+    call append(line(".")+0, "title: readme")
+    call append(line(".")+1, "time: ".strftime("%Y年%m月%d日 星期%a"))
+    call append(line(".")+2, "update: ".strftime("%Y年%m月%d日 星期%a"))
+    call append(line(".")+3, "package: ")
+    call setline(6,"---------------------------------------------------")
+    call append(line(".")+5, "")
 endfunc
 
 " 定义函数SetTitle，自动插入文件头
@@ -1218,10 +1194,10 @@ endfunc
 
 
 "=================================================================================================================================
-" (自定义功能)ctags 代码阅读辅助还未使用
+" (自定义功能)ctags 代码阅读辅助包还未使用
 "=================================================================================================================================
 " added by yangzw, for c/c++ completeness
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+"map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 
 
