@@ -9,3 +9,5 @@ libfcitxplatforminputcontextplugin.so
 dpkglist  
 dpkg包列表备份
 
+texrc
+ftplugin配置文件
