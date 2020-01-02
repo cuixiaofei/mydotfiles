@@ -13,7 +13,6 @@ deploy:
 #显示分支
 br:
 	git branch -a
-	
 show:
 	git remote show
 
