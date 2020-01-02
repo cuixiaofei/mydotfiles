@@ -11,3 +11,6 @@ dpkg包列表备份
 
 texrc
 ftplugin配置文件
+
+tex.vim
+ftplugin配置文件
