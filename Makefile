@@ -24,4 +24,5 @@ showurl:
 #拷贝现有的库
 cloneweb:
 	git clone https://github.com/cuixiaofei/mydotfiles.git
-
+clonetee:
+	git clone https://gitee.com/cui_xiaofei/mydotfiles.git
