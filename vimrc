@@ -17,7 +17,6 @@
 
 
 
-
 """""""""""""""""""Release readme""""""""""""""""""""""""""""""
 "0.3
 "完成了基本的命令并且可以自己添加和修改
@@ -37,7 +36,7 @@
 
 
 """""""""""""""""""Quick Jumptofile""""""""""""""""""""""""""""
-nmap <silent> <leader>pp :call SwitchToBuf("~/paper/dissertation/硕士毕业论文/硕士论文初稿/nkthesis.bib")<cr>
+nmap <silent> <leader>pp :call SwitchToBuf("~/paper/dissertation/master/thesis/nkthesis.bib")<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -317,7 +316,7 @@ set ruler
 set cmdheight=2
 
 "Show line number
-set nu
+set nonu
 
 "Do not redraw, when running macros.. lazyredraw
 set lz
@@ -438,8 +437,6 @@ set pastetoggle=<F3>
 
 """""""""""""""""""""""latex"""""""""""""""""""""""""""""""""""
 map <leader>lt :tabnew ~/.vim/snippets/latextemp.tex<cr>
-imap <C-u> ^{
-imap <C-d> _{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""cpppp"""""""""""""""""""""""""""""""""""
@@ -572,7 +569,6 @@ set sessionoptions+=sesdir
 "set fen
 "set fdl=0
 nmap <silent> <leader>zz zO
-nmap <silent> <leader>cc zc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text options
@@ -582,17 +578,19 @@ set shiftwidth=2
 
 map <leader>t2 :set shiftwidth=2<cr>
 map <leader>t4 :set shiftwidth=4<cr>
+
 au FileType html,vim,javascript,xml setl shiftwidth=2
 "au FileType html,python,vim,javascript setl tabstop=2
 autocmd FileType python set et sw=4 ts=4 sts=4
 au FileType java,c,cpp,cxx setl shiftwidth=2
 "au FileType java setl tabstop=4
 au FileType txt setl lbr
-au FileType txt setl tw=78
+au FileType txt setl tw=200
 
 set smarttab
 set lbr
-set tw=78
+"行字数与换行有关
+set tw=200
 
 """"""""""""""""""""""""""""""
 " Indent
@@ -630,6 +628,9 @@ set complete-=i
 " imapping
 " 下面好几种补全，只使用了一种
 inoremap <C-F>             <C-X><C-F>
+inoremap <C-A>    <Home>
+inoremap <C-E>    <End>
+
 "inoremap <expr> <CR>       pumvisible()?"\<C-Y>":"\<CR>"
 "inoremap <expr> <C-J>      pumvisible()?"\<PageDown>\<C-N>\<C-P>":"\<C-X><C-O>"
 "inoremap <expr> <C-K>      pumvisible()?"\<PageUp>\<C-P>\<C-N>":"\<C-K>"
