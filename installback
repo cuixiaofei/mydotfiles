@@ -1,0 +1,8 @@
+sudo apt-get install git
+cp dpkglist dpkglist_back
+sed -i '1,5d' dpkglist
+awk '{ print $2 }' dpkglist > dpkglista
+awk '{print $0}' dpkglista |xargs |sed 's/ / /g' > dpkglistb
+awk '{print "sudo apt-get install "$0}' dpkglistb > dpkglistc
+chmod 755 dpkglistc
+./dpkglistc
