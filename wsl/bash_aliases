@@ -1,0 +1,1 @@
+alias root='docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --rm -it --user $(id -u) rootproject/root root --web=off'
