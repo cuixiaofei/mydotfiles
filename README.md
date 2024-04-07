@@ -2,7 +2,7 @@
 
 As one of my classmate seduced me like a demon to reinstall my operating system, so I had to consider the backup problem again. He kept telling me to mkdir a "dotfile" folder, and the most important is what he said is definetely correct, so now the files are put here backup, in order to against a rainy day.
 
-[![](https://img.shields.io/badge/project-Solid-7C4DFF.svg?style=flat-square)](https://github.com/cuixiaofei/mydotfiles)
+[![](https://img.shields.io/badge/project-mydotfiles.svg?style=flat-square)](https://github.com/cuixiaofei/mydotfiles)
 
 
 `mydotfiles` lets you run some setupfiles on linux system, as every time you reinstall your operating system.
