@@ -110,7 +110,6 @@ alias valgrindcg='valgrind --dsymutil=yes --tool=callgrind'
 alias reborn='source ~/.zshrc'
 alias wd='cd ~/workarea'
 alias tara='tar -xzvf'
-alias sshc='ssh cuixf@8.134.193.243'
 
 ########
 if [[ $(command -v exa) ]] {

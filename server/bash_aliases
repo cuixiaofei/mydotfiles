@@ -1,0 +1,65 @@
+# ALIASES
+alias ..='cd ..;ls'
+alias ...='cd ../..;ls'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias 1='cd -'
+alias 2='cd -2'
+alias 3='cd -3'
+alias 4='cd -4'
+alias 5='cd -5'
+alias 6='cd -6'
+alias 7='cd -7'
+alias 8='cd -8'
+alias 9='cd -9'
+alias _='sudo '
+alias afind='ack -il'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias gc1='git clone --recursive --depth=1'
+alias globurl='noglob urlglobber '
+alias grep='grep --color=auto'
+alias md='mkdir -p'
+alias diff='colordiff'
+
+alias alrc='vim ~/.zshrc'
+alias valgrind='valgrind --track-origins=yes --leak-check=yes'
+alias valgrindcg='valgrind --dsymutil=yes --tool=callgrind'
+alias reborn='source ~/.zshrc'
+alias wd='cd ~/workarea'
+alias tara='tar -xzvf'
+
+# Stop after sending count ECHO_REQUEST packets #
+alias ping='ping -c 5'
+# Do not wait interval 1 second, go fast #
+alias fastping='ping -c 100 -s.2'
+
+
+# Safety Nets
+# do not delete / or prompt if deleting more than 3 files at a time #
+alias rm='rm -I --preserve-root'
+# confirmation #
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+# Parenting changing perms on / #
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+
+
+# distro specific  - Debian / Ubuntu and friends #
+# install with apt-get
+alias apt="sudo apt-get"
+alias aptin="sudo apt-get install"
+alias aptup="sudo apt-get update"
+alias aptug="sudo apt-get upgrade"
+
+## Colorize the ls output ##
+alias ls='ls --color=auto'
+## Use a long listing format ##
+alias ll='ls -la'
+## Show hidden files ##
+alias l.='ls -d .* --color=auto'
+
