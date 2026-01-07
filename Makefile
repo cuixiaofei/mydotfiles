@@ -135,7 +135,6 @@ check: test lint  ## 完整的质量检查 (手动)
 #=====================================#
 release-patch: version-patch  ## 发布修订版本 (补丁)
 	@echo "📦 发布补丁版本..."
-	make version-patch
 	git add $(VERSION_FILE)
 	git commit -m "发布: 版本 $(shell cat $(VERSION_FILE)) (补丁更新)"
 	git tag -a "v$(shell cat $(VERSION_FILE))" -m "发布版本 $(shell cat $(VERSION_FILE))"
@@ -143,7 +142,6 @@ release-patch: version-patch  ## 发布修订版本 (补丁)
 
 release-minor: version-minor  ## 发布次版本 (新功能)
 	@echo "📦 发布次版本..."
-	make version-minor
 	git add $(VERSION_FILE)
 	git commit -m "发布: 版本 $(shell cat $(VERSION_FILE)) (新功能)"
 	git tag -a "v$(shell cat $(VERSION_FILE))" -m "发布版本 $(shell cat $(VERSION_FILE))"
@@ -151,7 +149,6 @@ release-minor: version-minor  ## 发布次版本 (新功能)
 
 release-major: version-major  ## 发布主版本 (重大更新)
 	@echo "📦 发布主版本..."
-	make version-major
 	git add $(VERSION_FILE)
 	git commit -m "发布: 版本 $(shell cat $(VERSION_FILE)) (重大更新)"
 	git tag -a "v$(shell cat $(VERSION_FILE))" -m "发布版本 $(shell cat $(VERSION_FILE))"
