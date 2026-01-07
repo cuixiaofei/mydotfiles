@@ -23,7 +23,9 @@ Thanks to a classmate who devilishly persuaded me to reinstall my operating syst
     提交后发现log版本超前，继续学习版本管理
 
     📝 正确的工作流程
+
     逻辑顺序,开发工作 → commit → 再 release
+
     而不是：release → commit → 又 release ❌
 
 ## What's Next
