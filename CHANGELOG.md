@@ -32,3 +32,9 @@
 
 - 将默认分支从 master 重命名为 main
 - 变更为自动化 Makefile，支持语义化版本管理
+
+## [1.2.0]
+
+### 新增
+
+- 新增dustfiles/cleanpoint.sh，帮助理解版本超前情况

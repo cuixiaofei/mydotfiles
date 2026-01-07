@@ -11,9 +11,20 @@ Thanks to a classmate who devilishly persuaded me to reinstall my operating syst
 ## What's Interesting
 
 1. 为什么要对插入的图片添加 alt text？
-可访问性：屏幕阅读器可以为视障用户朗读图片描述
-SEO优化：搜索引擎能理解图片内容
-图片加载失败时：会显示 alt text 作为替代
+
+    可访问性：屏幕阅读器可以为视障用户朗读图片描述
+
+    SEO优化：搜索引擎能理解图片内容
+
+    图片加载失败时：会显示 alt text 作为替代
+
+2. 版本管理问题
+
+    提交后发现log版本超前，继续学习版本管理
+
+    📝 正确的工作流程
+    逻辑顺序,开发工作 → commit → 再 release
+    而不是：release → commit → 又 release ❌
 
 ## What's Next
 
