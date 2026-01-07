@@ -137,6 +137,11 @@ release-patch: version-patch  ## 发布修订版本 (补丁)
 	@echo "📦 发布补丁版本..."
 	git add $(VERSION_FILE)
 	git commit -m "发布: 版本 $(shell cat $(VERSION_FILE)) (补丁更新)"
+	@if git rev-parse -q --verify "v$(shell cat $(VERSION_FILE))" >/dev/null; then \
+		echo "⚠️  标签 v$(shell cat $(VERSION_FILE)) 已存在，先删除..."; \
+		git tag -d "v$(shell cat $(VERSION_FILE))" 2>/dev/null || true; \
+		git push origin --delete "v$(shell cat $(VERSION_FILE))" 2>/dev/null || true; \
+	fi
 	git tag -a "v$(shell cat $(VERSION_FILE))" -m "发布版本 $(shell cat $(VERSION_FILE))"
 	@echo "✅ 补丁发布完成，请执行: make push"
 
@@ -144,6 +149,11 @@ release-minor: version-minor  ## 发布次版本 (新功能)
 	@echo "📦 发布次版本..."
 	git add $(VERSION_FILE)
 	git commit -m "发布: 版本 $(shell cat $(VERSION_FILE)) (新功能)"
+	@if git rev-parse -q --verify "v$(shell cat $(VERSION_FILE))" >/dev/null; then \
+		echo "⚠️  标签 v$(shell cat $(VERSION_FILE)) 已存在，先删除..."; \
+		git tag -d "v$(shell cat $(VERSION_FILE))" 2>/dev/null || true; \
+		git push origin --delete "v$(shell cat $(VERSION_FILE))" 2>/dev/null || true; \
+	fi
 	git tag -a "v$(shell cat $(VERSION_FILE))" -m "发布版本 $(shell cat $(VERSION_FILE))"
 	@echo "✅ 次版本发布完成，请执行: make push"
 
@@ -151,6 +161,11 @@ release-major: version-major  ## 发布主版本 (重大更新)
 	@echo "📦 发布主版本..."
 	git add $(VERSION_FILE)
 	git commit -m "发布: 版本 $(shell cat $(VERSION_FILE)) (重大更新)"
+	@if git rev-parse -q --verify "v$(shell cat $(VERSION_FILE))" >/dev/null; then \
+		echo "⚠️  标签 v$(shell cat $(VERSION_FILE)) 已存在，先删除..."; \
+		git tag -d "v$(shell cat $(VERSION_FILE))" 2>/dev/null || true; \
+		git push origin --delete "v$(shell cat $(VERSION_FILE))" 2>/dev/null || true; \
+	fi
 	git tag -a "v$(shell cat $(VERSION_FILE))" -m "发布版本 $(shell cat $(VERSION_FILE))"
 	@echo "✅ 主版本发布完成，请执行: make push"
 
