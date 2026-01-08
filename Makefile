@@ -207,11 +207,26 @@ init-check:
 	done; \
 	[ -z "$$miss" ] && echo "🎉 齐备" || (echo "❌ 缺失:$${miss}"; exit 1)
 
-init:             ## 初始化 Git 仓库（git init + 首次提交）
+## 初始化 Git 仓库（默认 main + 首次提交）
+init:
 	@if [ -d .git ]; then \
 		echo "✅ Git 仓库已存在"; \
 	else \
-		git init && echo "🔰 已初始化 Git 仓库"; \
+		echo "🔰 正在初始化 Git 仓库..."; \
+		git init --quiet && \
+		git checkout -b main 2>/dev/null || true && \
+		echo "📂 仓库路径: $$(pwd)" && \
+		echo "🌿 默认分支: main" && \
+		echo "🔑 远程地址: 未配置（稍后 git remote add）"; \
+		if [ ! -f .gitignore ]; then \
+			echo "node_modules/\ndist/\nbuild/\n*.log\n.env" > .gitignore; \
+			echo "✅ 已创建默认 .gitignore"; \
+		fi; \
+		if [ -z "$$(git log --oneline -1 2>/dev/null)" ]; then \
+			git add . && \
+			git commit --quiet -m "初始提交：项目骨架" && \
+			echo "🎉 首次提交完成"; \
+		fi; \
 	fi
 
 .PHONY: help status add commit quick-commit push pull sync version-show version-patch version-minor version-major test lint check release-patch release-minor release-major log branch remote clean init s a c p l v
