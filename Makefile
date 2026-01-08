@@ -229,4 +229,4 @@ init:
 		fi; \
 	fi
 
-.PHONY: help status add commit quick-commit push pull sync version-show version-patch version-minor version-major test lint check release-patch release-minor release-major log branch remote clean init s a c p l v
+.PHONY: help status add commit quick-commit push pull sync version-show version-patch version-minor version-major test lint check release-patch release-minor release-major log branch remote clean init init-check
