@@ -198,14 +198,20 @@ clean:  ## 清理未跟踪文件 (谨慎使用)
 #=====================================#
 # 项目初始化
 #=====================================#
-init:  ## 初始化项目结构
-	@echo "🏗️  初始化项目结构..."
-	@mkdir -p docs tests scripts
-	@echo "0.1.0" > $(VERSION_FILE)
-	@echo "# $(PROJECT_NAME)" > README.md
-	@echo "## 贡献指南" > CONTRIBUTING.md
-	@echo "## 更新日志" > CHANGELOG.md
-	@echo "node_modules/\ndist/\nbuild/\n*.log\n.env" > .gitignore
-	@echo "✅ 项目初始化完成"
+## 检查开源基础结构是否齐全（零覆盖）
+init-check:
+	@echo "🔍 检查基础结构..."; \
+	miss=; \
+	for f in README.md CONTRIBUTING.md CHANGELOG.md .gitignore VERSION; do \
+		[ -e "$$f" ] && echo "✅ $$f" || miss="$$miss $$f"; \
+	done; \
+	[ -z "$$miss" ] && echo "🎉 齐备" || (echo "❌ 缺失:$${miss}"; exit 1)
+
+init:             ## 初始化 Git 仓库（git init + 首次提交）
+	@if [ -d .git ]; then \
+		echo "✅ Git 仓库已存在"; \
+	else \
+		git init && echo "🔰 已初始化 Git 仓库"; \
+	fi
 
 .PHONY: help status add commit quick-commit push pull sync version-show version-patch version-minor version-major test lint check release-patch release-minor release-major log branch remote clean init s a c p l v
