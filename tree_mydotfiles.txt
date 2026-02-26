@@ -1,0 +1,48 @@
+.
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE.md
+├── Makefile
+├── README.md
+├── VERSION
+├── conda_env
+│   ├── ocv_environment.yaml
+│   ├── physo_dpkglist.txt
+│   └── physo_environment.yaml
+├── deepin
+│   ├── README.md
+│   ├── bash_aliases
+│   ├── dpkglist
+│   ├── error
+│   ├── installback.sh
+│   ├── libfcitxplatforminputcontextplugin.so
+│   ├── tex.vim
+│   ├── texrc
+│   └── vimrc
+├── dustfiles
+│   ├── Makefile_260107
+│   └── cleanpoint.sh
+├── mipad
+│   ├── bashrc
+│   ├── profile
+│   └── zshrc
+├── server
+│   ├── bash_aliases
+│   ├── bashrc
+│   └── vimrc
+├── tree_mydotfiles.txt
+├── vibe_makefile
+│   ├── Makefile
+│   ├── README_Makefile.md
+│   ├── VERSION
+│   ├── makefile_oldversion
+│   ├── scripts
+│   │   └── show_env_info.sh
+│   ├── ssh_config.example
+│   └── tree_makefile.txt
+└── wsl
+    ├── README.md
+    ├── bash_aliases
+    └── bashrc
+
+10 directories, 36 files

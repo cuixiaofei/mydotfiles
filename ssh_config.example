@@ -1,0 +1,75 @@
+#============================================================================#
+# SSH 配置文件示例 | SSH Configuration Example
+# 用于 Git 多账号管理 | For Git Multi-Account Management
+# 
+# 使用方法 | Usage:
+# 1. 复制此文件到 ~/.ssh/config | Copy this file to ~/.ssh/config
+# 2. 修改路径和密钥文件名 | Modify paths and key filenames
+# 3. 设置正确的文件权限 | Set correct file permissions:
+#    chmod 600 ~/.ssh/config
+#============================================================================#
+
+#============================================================================#
+# GitHub 个人账号 | GitHub Personal Account
+#============================================================================#
+Host github-personal
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_personal
+    IdentitiesOnly yes
+    # 可选：添加代理配置 | Optional: Add proxy config
+    # ProxyCommand nc -X connect -x proxy.example.com:8080 %h %p
+
+#============================================================================#
+# GitHub 工作账号 | GitHub Work Account
+#============================================================================#
+Host github-work
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_work
+    IdentitiesOnly yes
+
+#============================================================================#
+# GitLab 账号 | GitLab Account
+#============================================================================#
+Host gitlab-company
+    HostName gitlab.company.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_gitlab
+    IdentitiesOnly yes
+
+#============================================================================#
+# Gitee 码云账号 | Gitee Account
+#============================================================================#
+Host gitee-personal
+    HostName gitee.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_gitee
+    IdentitiesOnly yes
+
+#============================================================================#
+# 通用 GitHub 配置（默认）| Generic GitHub Config (Default)
+#============================================================================#
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+
+#============================================================================#
+# 安全设置 | Security Settings
+#============================================================================#
+# 适用于所有主机的全局设置 | Global settings for all hosts
+Host *
+    # 使用安全的密钥交换算法 | Use secure key exchange algorithms
+    KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
+    # 使用安全的加密算法 | Use secure ciphers
+    Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com
+    # 使用安全的 MAC 算法 | Use secure MACs
+    MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com
+    # 禁用密码认证 | Disable password authentication
+    PasswordAuthentication no
+    # 启用公钥认证 | Enable public key authentication
+    PubkeyAuthentication yes
+    # 禁用主机密钥检查（仅用于测试）| Disable host key checking (for testing only)
+    # StrictHostKeyChecking no
