@@ -1,1 +1,18 @@
+# Auto-load all .sh files from ~/.bash_functions/
+if [ -d "$HOME/.bash_functions" ]; then
+    for f in "$HOME/.bash_functions"/*.sh; do
+        if [ -f "$f" ]; then
+            source "$f"
+        fi
+    done
+    unset f
+fi
+
+
+
+# fundval used
+alias fundval='python fund_valuation_runner.py -i ../files/outputs/category.txt -o ../files/outputs/'
+
+
+# CERNROOT used
 alias root='docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --rm -it --user $(id -u) rootproject/root root --web=off'
